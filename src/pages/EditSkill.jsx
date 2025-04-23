@@ -1,6 +1,4 @@
 
-
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSkills } from "../context/SkillContext";
