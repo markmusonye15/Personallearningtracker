@@ -2,9 +2,9 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
- function AuthProvider({ children }) {
+// Named export for Provider
+export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-
   const login = (username) => setUser({ username });
   const logout = () => setUser(null);
 
@@ -15,7 +15,7 @@ const AuthContext = createContext();
   );
 }
 
- function useAuth() {
+// Named export for hook
+export function useAuth() {
   return useContext(AuthContext);
 }
-export default { AuthProvider, useAuth };
