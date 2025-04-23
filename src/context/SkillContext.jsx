@@ -1,64 +1,5 @@
-// import { createContext, useContext, useState, useEffect } from "react";
-// const SkillContext = createContext();
 
-// export function SkillProvider({ children }) {
-//   const [skills, setSkills] = useState([]);
 
-    
-  
-//   useEffect(() => {
-//     fetch("http://localhost:3000/skills")
-//       .then((res) => res.json())
-//       .then((data) => setSkills(data));
-//   }, []);
-
-//   const addSkill = (skill) => {
-//     fetch("http://localhost:3000/skills", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(skill),
-//     })
-//       .then((res) => res.json())
-//       .then((newSkill) => {
-//         // Use functional update to avoid stale state
-//         setSkills((prevSkills) => [...prevSkills, newSkill]);
-//         return newSkill;
-//       })
-//       .catch((error) => console.error("Add skill error:", error));
-//   };
-
-//   const updateSkill = (updatedSkill) => {
-//     fetch(`http://localhost:3000/skills/${updatedSkill.id}`, {
-//       method: "PUT",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(updatedSkill),
-//     })
-//       .then(() => {
-//         // Use functional update to ensure fresh state
-//         setSkills((prevSkills) =>
-//           prevSkills.map((s) => (s.id === updatedSkill.id ? updatedSkill : s))
-//         );
-//       })
-//       .catch((error) => console.error("Update skill error:", error));
-//   };
-
-//   const deleteSkill = (id) => {
-//     fetch(`http://localhost:3000/skills/${id}`, {
-//       method: "DELETE",
-//     }).then(() => {
-//       // Keep functional update for consistency
-//       setSkills((prevSkills) => prevSkills.filter((s) => s.id !== id));
-//     });
-//   };
-
-//   return (
-//     <SkillContext.Provider
-//       value={{ skills, addSkill, updateSkill, deleteSkill }}
-//     >
-//       {children}
-//     </SkillContext.Provider>
-//   );
-// }
 
 import { createContext, useContext, useState, useEffect } from "react";
 const SkillContext = createContext();
@@ -67,13 +8,13 @@ export function SkillProvider({ children }) {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/skills")
+    fetch("http://localhost:3001/skills")
       .then((res) => res.json())
       .then((data) => setSkills(data));
   }, []);
 
   const addSkill = (skill) => {
-    return fetch("http://localhost:3000/skills", {
+    return fetch("http://localhost:3001/skills", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(skill),
@@ -85,21 +26,34 @@ export function SkillProvider({ children }) {
       });
   };
 
-  const updateSkill = (updatedSkill) => {
-    return fetch(`http://localhost:3000/skills/${updatedSkill.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedSkill),
-    }).then(() => {
-      setSkills((prevSkills) =>
-        prevSkills.map((s) => (s.id === updatedSkill.id ? updatedSkill : s))
+  // In SkillContext.jsx - Fix the updateSkill function
+  const updateSkill = async (id, updatedData) => {
+    try {
+      const response = await fetch(`http://localhost:3001/skills/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) throw new Error("Update failed");
+
+      const updatedSkill = await response.json();
+
+      setSkills((prev) =>
+        prev.map((skill) =>
+          skill.id === id ? { ...skill, ...updatedSkill } : skill
+        )
       );
+
       return updatedSkill;
-    });
+    } catch (error) {
+      console.error("Update error:", error);
+      throw error;
+    }
   };
 
   const deleteSkill = (id) => {
-    fetch(`http://localhost:3000/skills/${id}`, {
+    fetch(`http://localhost:3001/skills/${id}`, {
       method: "DELETE",
     }).then(() => {
       setSkills((prevSkills) => prevSkills.filter((s) => s.id !== id));

@@ -1,13 +1,6 @@
 {
   "skills": [
     {
-      "id": "2",
-      "name": "React",
-      "category": "Frontend",
-      "status": "Learning",
-      "notes": "Hooks, Context API"
-    },
-    {
       "id": "3",
       "name": "Node.js",
       "category": "Backend",
@@ -69,6 +62,13 @@
       "category": "backend",
       "status": "Learning",
       "notes": "iko bie"
+    },
+    {
+      "id": "7246",
+      "name": "cooking",
+      "category": "personal",
+      "status": "Learning",
+      "notes": "i love cooking pilau"
     }
   ]
 }
