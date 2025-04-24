@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
   }
 
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit} className="login-form" >
       <input
         type="text"
         placeholder="Username"
