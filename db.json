@@ -1,6 +1,13 @@
 {
   "skills": [
     {
+      "id": "2",
+      "name": "React",
+      "category": "hobby",
+      "status": "Learning",
+      "notes": "Hooks, Context API"
+    },
+    {
       "id": "3",
       "name": "Node.js",
       "category": "Backend",
@@ -64,11 +71,11 @@
       "notes": "iko bie"
     },
     {
-      "id": "7246",
-      "name": "cooking",
-      "category": "personal",
-      "status": "Learning",
-      "notes": "i love cooking pilau"
+      "id": "9ebe",
+      "name": "filming",
+      "category": "media ",
+      "status": "Mastered",
+      "notes": "filming is one of my hobbies"
     }
   ]
 }
