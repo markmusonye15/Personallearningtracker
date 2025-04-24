@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Fixed imports
+import "./App.css";
 
 import { AuthProvider } from "./context/AuthContext";
 import { SkillProvider } from "./context/SkillContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
 
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./components/LoginPage";
 import SkillList from "./pages/SkillList";
 import AddSkill from "./pages/AddSkill";
 import EditSkill from "./pages/EditSkill";
