@@ -37,7 +37,7 @@ function AddSkill() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="add-skill-form">
       <input
         name="name"
         placeholder="Name"
