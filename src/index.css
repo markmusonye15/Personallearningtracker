@@ -1,2 +1,158 @@
+/* General body styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #a7a6ac;
+  color: #222;
+  line-height: 1.6;
+}
 
+/* Navbar styles */
+nav {
+  background-color: #0300cc;
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 0 0 8px 8px;
+}
 
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #cce6ff;
+  text-decoration: underline;
+  outline: none;
+}
+
+nav button {
+  background-color: #005fa3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav button:hover,
+nav button:focus {
+  background-color: #004a7c;
+  box-shadow: 0 0 8px rgba(0, 95, 163, 0.7);
+  outline: none;
+}
+
+/* Main content container */
+div {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Headings */
+h2 {
+  color: #007acc;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* Skill list styles */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover,
+li:focus-within {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+li strong {
+  flex-grow: 1;
+  font-size: 1.1rem;
+}
+
+/* Edit link */
+li a {
+  color: #007acc;
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+li a:hover,
+li a:focus {
+  text-decoration: underline;
+  color: #005fa3;
+  outline: none;
+}
+
+/* Delete button */
+li button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+li button:hover,
+li button:focus {
+  background-color: #c9302c;
+  box-shadow: 0 0 8px rgba(201, 48, 44, 0.7);
+  outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li a,
+  li button {
+    margin: 0.5rem 0 0 0;
+  }
+}
