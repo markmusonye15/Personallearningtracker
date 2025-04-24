@@ -8,6 +8,17 @@
   ],
   "skills": [
     {
+
+
+      "id": "1",
+      "name": "JavaScript",
+      "category": "Programming",
+      "status": "Mastered",
+      "notes": "ES6, async,mm",
+      "userId": 1
+    },
+    {
+
       "id": "2",
       "name": "React",
       "category": "hobby",
