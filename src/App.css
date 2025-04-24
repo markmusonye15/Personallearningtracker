@@ -34,7 +34,9 @@ body.dark-mode .login-form {
   background: #1f2937;
   color: #e4e4e4;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6)
 }
+
 
 /* Input fields */
 .login-form input {
