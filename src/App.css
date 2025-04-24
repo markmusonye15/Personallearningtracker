@@ -17,7 +17,6 @@
   background-size:cover;
 }
 
-<<<<<<< HEAD
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -29,13 +28,12 @@
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #03c4fa21);
-=======
+}
 /* Dark mode for form */
 body.dark-mode .login-form {
   background: #1f2937;
   color: #e4e4e4;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
->>>>>>> 6a0b9f7 (style: enhance form styling for AddSkill and LoginPage components)
 }
 
 /* Input fields */
