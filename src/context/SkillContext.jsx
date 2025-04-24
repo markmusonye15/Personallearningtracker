@@ -6,28 +6,51 @@ const SkillContext = createContext();
 
 export function SkillProvider({ children }) {
   const [skills, setSkills] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/skills")
-      .then((res) => res.json())
-      .then((data) => setSkills(data));
+    const fetchSkills = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const res = await fetch("http://localhost:3001/skills");
+        if (!res.ok) throw new Error("Failed to fetch skills");
+        const data = await res.json();
+        setSkills(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchSkills();
   }, []);
 
-  const addSkill = (skill) => {
-    return fetch("http://localhost:3001/skills", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(skill),
-    })
-      .then((res) => res.json())
-      .then((newSkill) => {
-        setSkills((prevSkills) => [...prevSkills, newSkill]);
-        return newSkill;
+  const addSkill = async (skill) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("http://localhost:3001/skills", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(skill),
       });
+      if (!res.ok) throw new Error("Failed to add skill");
+      const newSkill = await res.json();
+      setSkills((prevSkills) => [...prevSkills, newSkill]);
+      return newSkill;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // In SkillContext.jsx - Fix the updateSkill function
   const updateSkill = async (id, updatedData) => {
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch(`http://localhost:3001/skills/${id}`, {
         method: "PUT",
@@ -47,22 +70,33 @@ export function SkillProvider({ children }) {
 
       return updatedSkill;
     } catch (error) {
-      console.error("Update error:", error);
+      setError(error.message);
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const deleteSkill = (id) => {
-    fetch(`http://localhost:3001/skills/${id}`, {
-      method: "DELETE",
-    }).then(() => {
+  const deleteSkill = async (id) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`http://localhost:3001/skills/${id}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete skill");
       setSkills((prevSkills) => prevSkills.filter((s) => s.id !== id));
-    });
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <SkillContext.Provider
-      value={{ skills, addSkill, updateSkill, deleteSkill }}
+      value={{ skills, addSkill, updateSkill, deleteSkill, isLoading, error }}
     >
       {children}
     </SkillContext.Provider>
