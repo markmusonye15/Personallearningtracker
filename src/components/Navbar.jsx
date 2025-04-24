@@ -6,7 +6,7 @@ function Navbar() {
 
   return (
     <nav>
-      <Link to="/skills">Skills</Link>
+     <h2>Skills</h2>
       <Link to="/add">Add Skill</Link>
       {user ? (
         <button onClick={logout}>Logout</button>
