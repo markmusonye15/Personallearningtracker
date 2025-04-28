@@ -1,9 +1,24 @@
 {
   "users": [
     {
-      "id": "1",
+      "userID": "1",
       "name": "John Doe",
       "password": "1234"
+    },
+    {
+      "userID": "2",
+      "name": "Jane Smith",
+      "password": "abcd"
+    },
+    {
+      "userID": "3",
+      "name": "Alice Johnson",
+      "password": "pass123"
+    },
+    {
+      "userID": "4",
+      "name": "Bob Williams",
+      "password": "qwerty"
     }
   ],
   "skills": [
@@ -12,22 +27,64 @@
       "name": "JavaScript",
       "category": "Programming",
       "status": "Mastered",
-      "notes": "ES6, async,mm",
-      "userId": 1
+      "notes": "ES6, async, modules",
+      "userID": "1"
     },
     {
       "id": "2",
       "name": "React",
-      "category": "hobby",
-      "status": "Learning",
-      "notes": "Hooks, Context API"
-    },
-    {
-      "id": "8f33",
-      "name": "Driving",
       "category": "Frontend",
       "status": "Learning",
-      "notes": "mbjhg"
+      "notes": "Hooks, Context API, Router",
+      "userID": "1"
+    },
+    {
+      "id": "3",
+      "name": "Cooking",
+      "category": "Lifestyle",
+      "status": "Learning",
+      "notes": "Baking cakes, meal prep",
+      "userID": "2"
+    },
+    {
+      "id": "4",
+      "name": "Painting",
+      "category": "Art",
+      "status": "Not Started",
+      "notes": "Watercolors and acrylics",
+      "userID": "2"
+    },
+    {
+      "id": "5",
+      "name": "Python",
+      "category": "Programming",
+      "status": "Learning",
+      "notes": "OOP, Flask, APIs",
+      "userID": "3"
+    },
+    {
+      "id": "6",
+      "name": "Guitar",
+      "category": "Music",
+      "status": "Learning",
+      "notes": "Chords, strumming patterns",
+      "userID": "3"
+    },
+    {
+      "id": "7",
+      "name": "Driving",
+      "category": "Personal Development",
+      "status": "Learning",
+      "notes": "Practice parking and highways",
+      "userID": "4"
+    },
+    {
+      "id": "8",
+      "name": "Fishing",
+      "category": "Outdoor",
+      "status": "Learning",
+      "notes": "Casting techniques, bait types",
+      "userID": "4"
     }
   ]
 }

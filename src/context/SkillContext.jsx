@@ -1,7 +1,5 @@
-
-
-
 import { createContext, useContext, useState, useEffect } from "react";
+
 const SkillContext = createContext();
 
 export function SkillProvider({ children }) {
@@ -14,7 +12,7 @@ export function SkillProvider({ children }) {
       setIsLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:3000/skills");
+        const res = await fetch("http://localhost:3000/skills?userID=$currentUserID");
         if (!res.ok) throw new Error("Failed to fetch skills");
         const data = await res.json();
         setSkills(data);
@@ -48,27 +46,26 @@ export function SkillProvider({ children }) {
     }
   };
 
-  const updateSkill = async (id, updatedData) => {
+  const updateSkill = async (id, updatedSkillData) => {
     setIsLoading(true);
     setError(null);
     try {
       const response = await fetch(`http://localhost:3000/skills/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedData),
+        body: JSON.stringify(updatedSkillData),
       });
-
       if (!response.ok) throw new Error("Update failed");
 
-      const updatedSkill = await response.json();
+      const updatedFromServer = await response.json();
 
-      setSkills((prev) =>
-        prev.map((skill) =>
-          skill.id === id ? { ...skill, ...updatedSkill } : skill
+      setSkills((skills) =>
+        skills.map((skill) =>
+          skill.id === id ? { ...skill, ...updatedFromServer } : skill
         )
       );
 
-      return updatedSkill;
+      return updatedFromServer;
     } catch (error) {
       setError(error.message);
       throw error;
@@ -103,7 +100,6 @@ export function SkillProvider({ children }) {
   );
 }
 
-// Move useSkills hook outside the Provider component
 export function useSkills() {
   const context = useContext(SkillContext);
   if (!context) {
