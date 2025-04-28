@@ -94,27 +94,6 @@
       "status": "Learning",
       "notes": "Casting techniques, bait types",
       "userID": "4"
-    },
-    {
-      "id": "8bae",
-      "name": "photgraphy",
-      "category": "hobby",
-      "status": "Mastered",
-      "notes": "photograpphy was my short course and i loved it soo much"
-    },
-    {
-      "id": "cde2",
-      "name": "tiktok training dance classes",
-      "category": "hobby",
-      "status": "Mastered",
-      "notes": "tiktok keeps us busy from alot"
-    },
-    {
-      "id": "716e",
-      "name": "cooking",
-      "category": "personal",
-      "status": "Learning",
-      "notes": "cooking is fun onto learning new receipies"
     }
   ]
 }
