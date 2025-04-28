@@ -8,8 +8,6 @@
   ],
   "skills": [
     {
-
-
       "id": "1",
       "name": "JavaScript",
       "category": "Programming",
@@ -18,12 +16,18 @@
       "userId": 1
     },
     {
-
       "id": "2",
       "name": "React",
       "category": "hobby",
       "status": "Learning",
       "notes": "Hooks, Context API"
+    },
+    {
+      "id": "8f33",
+      "name": "Driving",
+      "category": "Frontend",
+      "status": "Learning",
+      "notes": "mbjhg"
     }
   ]
 }
