@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSkills } from "../context/SkillContext";
@@ -19,7 +18,7 @@ function EditSkill() {
   useEffect(() => {
     async function fetchSkill() {
       try {
-        const res = await fetch(`http://localhost:3001/skills/${id}`);
+        const res = await fetch(`http://localhost:3000/skills/${id}`);
         if (!res.ok) throw new Error("Skill not found");
 
         const data = await res.json();
