@@ -1,5 +1,4 @@
 ## personal learning skills/tracker...
-
 SkillLog – Personal Learning Tracker
 SkillLog is a web app that helps users track, manage, and update their skill-learning journey. It offers features like adding new skills, updating progress, filtering by category or status, and securing user views with basic login authentication.
 
