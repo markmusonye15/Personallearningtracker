@@ -1,7 +1,7 @@
 .login-form {
-  position:relative;
+  position: relative;
   padding: 60px;
-  background:rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   border: 1px solid #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -14,7 +14,7 @@
   border-radius: 20px;
   margin: 50px auto;
   background-image: url(https://i.pinimg.com/736x/e0/4e/a0/e04ea097c599b1487516ebb400c5c119.jpg);
-  background-size:cover;
+  background-size: cover;
 }
 
 .logo {
@@ -34,7 +34,9 @@ body.dark-mode .login-form {
   background: #1f2937;
   color: #e4e4e4;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6)
 }
+
 
 /* Input fields */
 .login-form input {
@@ -44,7 +46,7 @@ body.dark-mode .login-form {
   border-radius: 12px;
   transition: all 0.3s ease;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Input focus effect */
@@ -72,7 +74,7 @@ body.dark-mode .login-form input:focus {
   border-radius: 12px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
 }
 
@@ -101,7 +103,8 @@ body.dark-mode .login-form button:hover {
 }
 
 body {
-  background: url(https://i.pinimg.com/736x/fd/7d/27/fd7d27a2a35ea0128d912edbd8c7cd95.jpg) no-repeat center center fixed;
+  background: url(https://i.pinimg.com/736x/fd/7d/27/fd7d27a2a35ea0128d912edbd8c7cd95.jpg)
+    no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -111,9 +114,9 @@ body {
 }
 
 .add-skill-form {
-  position:relative;
+  position: relative;
   padding: 60px;
-  background:rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(15px);
   border: 1px solid #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -126,7 +129,7 @@ body {
   border-radius: 20px;
   margin: 50px auto;
   background-image: url(https://i.pinimg.com/736x/e0/4e/a0/e04ea097c599b1487516ebb400c5c119.jpg);
-  background-size:cover;
+  background-size: cover;
 }
 
 .add-skill-form input,
@@ -189,9 +192,19 @@ body {
 }
 
 @keyframes shake {
-  0% { transform: translateX(-4px); }
-  25% { transform: translateX(4px); }
-  50% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-4px);
+  }
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
