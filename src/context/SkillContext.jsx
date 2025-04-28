@@ -12,7 +12,7 @@ export function SkillProvider({ children }) {
       setIsLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:3000/skills");
+        const res = await fetch("http://localhost:3000/skills?userID=$currentUserID");
         if (!res.ok) throw new Error("Failed to fetch skills");
         const data = await res.json();
         setSkills(data);
