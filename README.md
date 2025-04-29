@@ -61,4 +61,5 @@ Make sure json-server and your React app are running at the same time but on dif
 Skills are saved in db.json, so any changes will be persistent unless you reset the file.
 Focus on clean code and component reusability.
 
-# Link to slides :https://docs.google.com/presentation/d/1wtUwKNm5UICExU6aFVKqx8GZbKSUeWLcU1BKQFgkgiA/edit?usp=sharing
+# Link to slides 
+:https://docs.google.com/presentation/d/1wtUwKNm5UICExU6aFVKqx8GZbKSUeWLcU1BKQFgkgiA/edit?usp=sharing

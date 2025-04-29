@@ -32,7 +32,7 @@ function LoginPage() {
     e.preventDefault();
     try {
       const res = await fetch(
-        `http://localhost:3000/users/${deleteAccountId}`,
+        `http://localhost:4000/users/${deleteAccountId}`,
         {
           method: "DELETE",
           headers: {
@@ -76,7 +76,7 @@ function LoginPage() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const res = await fetch("http://localhost:4000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -12,7 +12,7 @@ export function SkillProvider({ children }) {
       setIsLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:3000/skills?userID=$currentUserID");
+        const res = await fetch("http://localhost:4000/skills?userID=$currentUserID");
         if (!res.ok) throw new Error("Failed to fetch skills");
         const data = await res.json();
         setSkills(data);
@@ -29,7 +29,7 @@ export function SkillProvider({ children }) {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:3000/skills", {
+      const res = await fetch("http://localhost:4000/skills", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(skill),
@@ -51,7 +51,7 @@ export function SkillProvider({ children }) {
    setIsLoading(true);
    setError(null);
    try {
-     const response = await fetch(`http://localhost:3000/skills/${id}`, {
+     const response = await fetch(`http://localhost:4000/skills/${id}`, {
        method: "PATCH",
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify(updatedSkillData),
@@ -80,7 +80,7 @@ export function SkillProvider({ children }) {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:3000/skills/${id}`, {
+      const res = await fetch(`http://localhost:4000/skills/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error("Failed to delete skill");
