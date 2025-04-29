@@ -46,33 +46,35 @@ export function SkillProvider({ children }) {
     }
   };
 
-  const updateSkill = async (id, updatedSkillData) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`http://localhost:3000/skills/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedSkillData),
-      });
-      if (!response.ok) throw new Error("Update failed");
+ const updateSkill = async (id, updatedSkillData) => {
+   id = Number(id); 
+   setIsLoading(true);
+   setError(null);
+   try {
+     const response = await fetch(`http://localhost:3000/skills/${id}`, {
+       method: "PATCH",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify(updatedSkillData),
+     });
+     if (!response.ok) throw new Error("Update failed");
 
-      const updatedFromServer = await response.json();
+     const updatedFromServer = await response.json();
 
-      setSkills((skills) =>
-        skills.map((skill) =>
-          skill.id === id ? { ...skill, ...updatedFromServer } : skill
-        )
-      );
+     setSkills((skills) =>
+       skills.map((skill) =>
+         skill.id === id ? { ...skill, ...updatedFromServer } : skill
+       )
+     );
 
-      return updatedFromServer;
-    } catch (error) {
-      setError(error.message);
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
+     return updatedFromServer;
+   } catch (error) {
+     setError(error.message);
+     throw error;
+   } finally {
+     setIsLoading(false);
+   }
+ };
+
 
   const deleteSkill = async (id) => {
     setIsLoading(true);
