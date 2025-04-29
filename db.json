@@ -3,22 +3,44 @@
     {
       "userID": "1",
       "name": "John Doe",
-      "password": "1234"
+      "password": "1234",
+      "id": "5bed"
     },
     {
       "userID": "2",
       "name": "Jane Smith",
-      "password": "abcd"
+      "password": "abcd",
+      "id": "6bbf"
     },
     {
       "userID": "3",
       "name": "Alice Johnson",
-      "password": "pass123"
+      "password": "pass123",
+      "id": "ced1"
     },
     {
       "userID": "4",
       "name": "Bob Williams",
-      "password": "qwerty"
+      "password": "qwerty",
+      "id": "f122"
+    },
+    {
+      "id": "256a",
+      "userID": "5",
+      "name": "mark mende",
+      "password": "12345"
+    },
+    {
+      "id": "c376",
+      "userID": "6",
+      "name": "Alex Jones",
+      "password": "1234567"
+    },
+    {
+      "id": "7e7a",
+      "userID": "7",
+      "name": "lulu obam",
+      "password": "lulz"
     }
   ],
   "skills": [
@@ -85,6 +107,20 @@
       "status": "Learning",
       "notes": "Casting techniques, bait types",
       "userID": "4"
+    },
+    {
+      "id": "3ff3",
+      "name": "JavaScript",
+      "category": "frontend",
+      "status": "Learning",
+      "notes": "Enjoying the process"
+    },
+    {
+      "id": "da77",
+      "name": "Driving",
+      "category": "Frontend",
+      "status": "Learning",
+      "notes": ",,"
     }
   ]
 }

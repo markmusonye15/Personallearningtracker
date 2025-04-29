@@ -4,8 +4,13 @@ const AuthContext = createContext();
 
 // Named export for Provider
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const login = (username) => setUser({ username });
+  const [user, setUser] = useState(null); // user = { name, userID }
+
+  const login = (userObj) => {
+    // Expecting: { name: string, userID: string }
+    setUser(userObj);
+  };
+
   const logout = () => setUser(null);
 
   return (

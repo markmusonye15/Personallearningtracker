@@ -18,43 +18,29 @@ function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(username);
-    navigate("/skills");
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleDeleteAccount = async (e) => {
+  //  LOGIN HANDLER
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(
-        `http://localhost:3000/users/${deleteAccountId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: deleteAccountName,
-            password: deleteAccountPassword,
-          }),
-        }
+      const res = await fetch(`http://localhost:3000/users`);
+      const users = await res.json();
+      const user = users.find(
+        (u) => u.name === username && u.password === password
       );
 
-      if (!res.ok) throw new Error("Failed to delete account");
+      if (!user) {
+        alert("Invalid username or password");
+        return;
+      }
 
-      alert("Account deleted successfully");
-      setDeleteAccount(false);
-      resetDeleteAccountForm();
-    } catch (error) {
-      alert("Failed to delete account");
+      login(username); // store username or you can extend to store userID
+      navigate("/skills");
+    } catch (err) {
+      alert("Login failed");
     }
   };
 
+  //  DELETE ACCOUNT HANDLERS
   const handleDeleteAccountChange = (e) => {
     const { name, value } = e.target;
     if (name === "deleteAccountId") setDeleteAccountId(value);
@@ -62,9 +48,35 @@ function LoginPage() {
     if (name === "deleteAccountPassword") setDeleteAccountPassword(value);
   };
 
-  const handleCancelDelete = () => {
-    setDeleteAccount(false);
-    resetDeleteAccountForm();
+  const handleDeleteAccount = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(`http://localhost:3000/users/${deleteAccountId}`);
+      const user = await res.json();
+
+      if (
+        user.name !== deleteAccountName ||
+        user.password !== deleteAccountPassword
+      ) {
+        alert("Credentials do not match");
+        return;
+      }
+
+      const deleteRes = await fetch(
+        `http://localhost:3000/users/${deleteAccountId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!deleteRes.ok) throw new Error("Failed to delete");
+
+      alert("Account deleted successfully");
+      setDeleteAccount(false);
+      resetDeleteAccountForm();
+    } catch (err) {
+      alert("Failed to delete account");
+    }
   };
 
   const resetDeleteAccountForm = () => {
@@ -73,34 +85,52 @@ function LoginPage() {
     setDeleteAccountPassword("");
   };
 
+  //  SIGNUP HANDLER
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
+      const resUsers = await fetch("http://localhost:3000/users");
+      const users = await resUsers.json();
+
+      const nameTaken = users.some((u) => u.name === signupUsername);
+      if (nameTaken) {
+        alert("Username already taken");
+        return;
+      }
+
+      const maxId = users.reduce(
+        (max, user) => Math.max(max, Number(user.userID)),
+        0
+      );
+
+      const newUser = {
+        userID: String(maxId + 1),
+        name: signupUsername,
+        password: signupPassword,
+      };
+
       const res = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: signupUsername,
-          password: signupPassword,
-        }),
+        body: JSON.stringify(newUser),
       });
 
-      if (!res.ok) throw new Error("Failed to create account");
+      if (!res.ok) throw new Error("Signup failed");
 
       alert("Account created successfully! You can now log in.");
       setShowSignup(false);
       setSignupUsername("");
       setSignupPassword("");
-    } catch (error) {
-      alert("Failed to create account");
+    } catch (err) {
+      alert("Signup failed");
     }
   };
 
   return (
     <div>
-      {/* Login Form */}
+      {/* LOGIN FORM */}
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <input
@@ -114,20 +144,19 @@ function LoginPage() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={handlePasswordChange}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <button type="submit">Login</button>
       </form>
 
-      {/* Create Account Button */}
+      {/* CREATE ACCOUNT SECTION */}
       {!showSignup && (
         <button type="button" onClick={() => setShowSignup(true)}>
           Create Account
         </button>
       )}
 
-      {/* Signup Form */}
       {showSignup && (
         <form onSubmit={handleSignup}>
           <h2>Create Account</h2>
@@ -152,12 +181,11 @@ function LoginPage() {
         </form>
       )}
 
-      {/* Delete Account Button */}
+      {/* DELETE ACCOUNT SECTION */}
       <button type="button" onClick={() => setDeleteAccount(true)}>
         Delete Account
       </button>
 
-      {/* Delete Account Form */}
       {deleteAccount && (
         <form onSubmit={handleDeleteAccount}>
           <h2>Delete Account</h2>
@@ -186,7 +214,7 @@ function LoginPage() {
             required
           />
           <button type="submit">Confirm Delete</button>
-          <button type="button" onClick={handleCancelDelete}>
+          <button type="button" onClick={() => setDeleteAccount(false)}>
             Cancel
           </button>
         </form>

@@ -52,7 +52,7 @@ export function SkillProvider({ children }) {
    setError(null);
    try {
      const response = await fetch(`http://localhost:3000/skills/${id}`, {
-       method: "PATCH",
+       method: "PU",
        headers: { "Content-Type": "application/json" },
        body: JSON.stringify(updatedSkillData),
      });
