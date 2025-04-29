@@ -18,7 +18,7 @@ function EditSkill() {
   useEffect(() => {
     async function fetchSkill() {
       try {
-        const res = await fetch(`http://localhost:3000/skills/${id}`);
+        const res = await fetch(`http://localhost:4000/skills/${id}`);
         if (!res.ok) throw new Error("Skill not found");
 
         const data = await res.json();
