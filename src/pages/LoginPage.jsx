@@ -8,14 +8,18 @@ import { useNavigate } from "react-router-dom";
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(username);
-    navigate("/skills");
+    try {
+      await login(username, password);
+      navigate("/skills");
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Invalid username or password. Please try again.");
+    }
   };
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    login(password);
   }
 
   return (

@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSkills } from "../context/SkillContext";
 
 function EditSkill() {
   const { id } = useParams();
-  const { updateSkill } = useSkills(); // we only need the update method here
+  const { updateSkill } = useSkills();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -19,7 +18,7 @@ function EditSkill() {
   useEffect(() => {
     async function fetchSkill() {
       try {
-        const res = await fetch(`http://localhost:3001/skills/${id}`);
+        const res = await fetch(`http://localhost:3000/skills/${id}`);
         if (!res.ok) throw new Error("Skill not found");
 
         const data = await res.json();
@@ -42,7 +41,8 @@ function EditSkill() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateSkill(parseInt(id), form);
+      const { id: _id, ...formWithoutId } = form;
+      await updateSkill(id, formWithoutId);
       navigate("/skills");
     } catch (error) {
       alert("Failed to update skill");
