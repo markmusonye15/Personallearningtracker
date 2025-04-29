@@ -3,22 +3,31 @@
     {
       "userID": "1",
       "name": "John Doe",
-      "password": "1234"
+      "password": "1234",
+      "id": "ed00"
     },
     {
       "userID": "2",
       "name": "Jane Smith",
-      "password": "abcd"
+      "password": "abcd",
+      "id": "cc4a"
     },
     {
       "userID": "3",
       "name": "Alice Johnson",
-      "password": "pass123"
+      "password": "pass123",
+      "id": "b3fe"
     },
     {
       "userID": "4",
       "name": "Bob Williams",
-      "password": "qwerty"
+      "password": "qwerty",
+      "id": "e3b2"
+    },
+    {
+      "id": "c621",
+      "name": "l,",
+      "password": ".,.,"
     }
   ],
   "skills": [
@@ -85,6 +94,27 @@
       "status": "Learning",
       "notes": "Casting techniques, bait types",
       "userID": "4"
+    },
+    {
+      "id": "8bae",
+      "name": "photgraphy",
+      "category": "hobby",
+      "status": "Mastered",
+      "notes": "photograpphy was my short course and i loved it soo much"
+    },
+    {
+      "id": "cde2",
+      "name": "tiktok training dance classes",
+      "category": "hobby",
+      "status": "Mastered",
+      "notes": "tiktok keeps us busy from alot"
+    },
+    {
+      "id": "716e",
+      "name": "cooking",
+      "category": "personal",
+      "status": "Learning",
+      "notes": "cooking is fun onto learning new receipies"
     }
   ]
 }
