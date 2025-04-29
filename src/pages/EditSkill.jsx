@@ -4,7 +4,7 @@ import { useSkills } from "../context/SkillContext";
 
 function EditSkill() {
   const { id } = useParams();
-  const { updateSkill } = useSkills(); // we only need the update method here
+  const { updateSkill } = useSkills();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -41,7 +41,8 @@ function EditSkill() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateSkill(parseInt(id), form);
+      const { id: _id, ...formWithoutId } = form;
+      await updateSkill(id, formWithoutId);
       navigate("/skills");
     } catch (error) {
       alert("Failed to update skill");
