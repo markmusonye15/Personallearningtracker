@@ -1,7 +1,5 @@
-
-
-
 import { createContext, useContext, useState, useEffect } from "react";
+
 const SkillContext = createContext();
 
 export function SkillProvider({ children }) {
@@ -14,7 +12,7 @@ export function SkillProvider({ children }) {
       setIsLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:3000/skills");
+        const res = await fetch("http://localhost:3000/skills?userID=$currentUserID");
         if (!res.ok) throw new Error("Failed to fetch skills");
         const data = await res.json();
         setSkills(data);
@@ -48,34 +46,35 @@ export function SkillProvider({ children }) {
     }
   };
 
-  const updateSkill = async (id, updatedData) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch(`http://localhost:3000/skills/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedData),
-      });
+ const updateSkill = async (id, updatedSkillData) => {
+   id = Number(id); 
+   setIsLoading(true);
+   setError(null);
+   try {
+     const response = await fetch(`http://localhost:3000/skills/${id}`, {
+       method: "PATCH",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify(updatedSkillData),
+     });
+     if (!response.ok) throw new Error("Update failed");
 
-      if (!response.ok) throw new Error("Update failed");
+     const updatedFromServer = await response.json();
 
-      const updatedSkill = await response.json();
+     setSkills((skills) =>
+       skills.map((skill) =>
+         skill.id === id ? { ...skill, ...updatedFromServer } : skill
+       )
+     );
 
-      setSkills((prev) =>
-        prev.map((skill) =>
-          skill.id === id ? { ...skill, ...updatedSkill } : skill
-        )
-      );
+     return updatedFromServer;
+   } catch (error) {
+     setError(error.message);
+     throw error;
+   } finally {
+     setIsLoading(false);
+   }
+ };
 
-      return updatedSkill;
-    } catch (error) {
-      setError(error.message);
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const deleteSkill = async (id) => {
     setIsLoading(true);
@@ -103,7 +102,6 @@ export function SkillProvider({ children }) {
   );
 }
 
-// Move useSkills hook outside the Provider component
 export function useSkills() {
   const context = useContext(SkillContext);
   if (!context) {
