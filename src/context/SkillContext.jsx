@@ -66,15 +66,14 @@ export function SkillProvider({ children }) {
        )
      );
 
-     return updatedFromServer;
-   } catch (error) {
-     setError(error.message);
-     throw error;
-   } finally {
-     setIsLoading(false);
-   }
- };
-
+      return updatedFromServer;
+    } catch (error) {
+      setError(error.message);
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const deleteSkill = async (id) => {
     setIsLoading(true);
