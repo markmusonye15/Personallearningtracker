@@ -7,10 +7,12 @@ import { SkillProvider } from "./context/SkillContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
 
+
 import LoginPage from "./components/LoginPage";
 import SkillList from "./pages/SkillList";
 import AddSkill from "./pages/AddSkill";
 import EditSkill from "./pages/EditSkill";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
       <AuthProvider>
         <SkillProvider>
           <Navbar />
+          
           <Routes>
             {" "}
             
