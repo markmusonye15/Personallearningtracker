@@ -41,6 +41,18 @@
       "userID": "7",
       "name": "lulu obam",
       "password": "lulz"
+    },
+    {
+      "id": "d94d",
+      "userID": "8",
+      "name": "Mark Musonye",
+      "password": "1234567"
+    },
+    {
+      "id": "67de",
+      "userID": "9",
+      "name": "Peter Maragi",
+      "password": "12345"
     }
   ],
   "skills": [
@@ -107,20 +119,6 @@
       "status": "Learning",
       "notes": "Casting techniques, bait types",
       "userID": "4"
-    },
-    {
-      "id": "3ff3",
-      "name": "JavaScript",
-      "category": "frontend",
-      "status": "Learning",
-      "notes": "Enjoying the process"
-    },
-    {
-      "id": "da77",
-      "name": "Driving",
-      "category": "Frontend",
-      "status": "Learning",
-      "notes": ",,"
     }
   ]
 }

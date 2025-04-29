@@ -48,7 +48,7 @@ React Router Dom
 Context API
 json-server
 CSS (or Tailwind / simple styling)
-Axios (optional, for API calls)
+(FETCH, for API calls)
 
 # Authentication
 
